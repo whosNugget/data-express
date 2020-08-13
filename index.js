@@ -9,15 +9,16 @@ const app = express();
 
 app.use(cookieParser('This is my passphrase'));
 
-app.use((req, res,next) =>{
+app.use((req, res, next) =>
+{
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
 app.set('view engine', 'pug');
-app.set('views', __dirname + '/views');
-app.use(express.static(path.join(__dirname + '/public')));
+app.set('views', path.join(__dirname, '/views'));
+app.use(express.static(path.join(__dirname, '/public')));
 
 let urlencodedParser = bodyParser.urlencoded({
     extended: true
