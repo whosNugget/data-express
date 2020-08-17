@@ -42,9 +42,15 @@ exports.createUser = (req, res) =>
     //password  - req.body.password
 
     let salt = bcrypt.genSaltSync(10);
-    let hash = bcrypt.hashSync(req.body.password, salt);
+    let hashPassword = bcrypt.hashSync(req.body.password, salt);
+    let hashQ1 = bcrypt.hashSync(req.body.favoriteColor, salt);
+    let hashQ2 = bcrypt.hashSync(req.body.betterVideogame, salt)
+    let hashQ3 = bcrypt.hashSync(req.body.preferredPhrase, salt)
 
-    console.log('hash: ' + hash);
+    console.log('hash for password: ' + hashPassword);
+    console.log('hash for Q1: ' + hashQ1);
+    console.log('hash for Q2: ' + hashQ2);
+    console.log('hash for Q3: ' + hashQ3);
     console.log('matches?:' + bcrypt.compareSync(req.body.password, hash));
 };
 
