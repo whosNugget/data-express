@@ -23,3 +23,8 @@ let accountSchema = mongoose.Schema({
 });
 
 let Account = mongoose.model('Account_Collection', accountSchema);
+
+exports.index = (req, res) =>
+{
+    res.render('index');
+};
