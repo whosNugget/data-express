@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const expressSession = require('express-session');
+const bcrypt = require('bcryptjs');
 mongoose.Promise = global.Promise;
 
 mongoose.connect('mongodb+srv://Unlikeplatypus:GkrB98JzriDkoLVI@cluster0.2dtjh.mongodb.net/Users?retryWrites=true&w=majority', {
@@ -23,3 +25,49 @@ let accountSchema = mongoose.Schema({
 });
 
 let Account = mongoose.model('Account_Collection', accountSchema);
+
+//This is a get for site/create
+exports.createPage = (req, res) =>
+{
+    res.render('create');
+};
+
+//This is a post for site/create
+exports.createUser = (req, res) =>
+{
+    //Values here are up to date as to what's on master (8/17/2020, 3:29PM)
+
+    //email     - req.body.email
+    //username  - req.body.username
+    //password  - req.body.password
+
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(req.body.password, salt);
+
+    console.log('hash: ' + hash);
+    console.log('matches?:' + bcrypt.compareSync(req.body.password, hash));
+};
+
+//This is a get for site/login
+exports.loginPage = (req, res) =>
+{
+    res.render('login');
+};
+
+//This is a post for site/login
+exports.login = (req, res) =>
+{
+    //pull from database and compare with req values
+    /*
+    
+    example for password
+    if (bcrypt.compareSync(req.body.password, HASH FROM DATABASE));
+        login, create cookie?
+
+    */
+};
+
+exports.index = (req, res) =>
+{
+    res.render('index');
+};
