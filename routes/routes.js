@@ -74,7 +74,7 @@ exports.editPage = (req, res) =>
     res.render('edit',
         {
             "title": "Edit User",
-            "config": loggedInUserData,
+            "config": loggedInUserData, //This is temporary
         });
 };
 
@@ -121,7 +121,7 @@ exports.index = (req, res) =>
 {
     res.render('index', {
         "title": "Index",
-        "config": req.session.user,
+        "config": req.session,
     });
 };
 
