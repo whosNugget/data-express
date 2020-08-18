@@ -97,9 +97,18 @@ exports.login = (req, res) =>
         login, create cookie?
 
     */
-   Account.findOne({ username: req.body.username },(err, data) => {
+   Account.findOne({ username: req.body.username },(err, data) => 
+   {
         let password = data.password;
-
+        if (bcrypt.compareSync(req.body.password, password))
+        {
+            req.session.user =
+            {
+                isAuthenticated: true,
+                username: req.body.username
+            }
+            res.redirect('/');
+        }
    });
 };
 
