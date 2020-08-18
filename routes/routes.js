@@ -71,16 +71,45 @@ exports.createUser = (req, res) =>
 //This is a get for site/edit
 exports.editPage = (req, res) =>
 {
-    res.render('edit',
+    console.log(req.session);
+    Account.findOne({ username: req.session.user.username }, (err, account) =>
+    {
+        if (err) return console.error(err);
+
+        if (account)
         {
-            "title": "Edit User",
-            "config": loggedInUserData, //This is temporary
-        });
+            console.log(account);
+
+            res.render('edit', {
+                "title": "Edit User",
+                "config": account,
+            });
+        }
+        else res.send("There was an error accessing your account");
+    });
 };
 
 exports.edit = (req, res) =>
 {
     //Logic for editing user
+    Account.findOne({ username: req.session.user.username }, (err, account) =>
+    {
+        if (err) return console.error(err);
+
+        //going to have to do the unique username check still
+        account.username = req.body.username;
+        //Save the salted password if it exists, and if it matches the confirm
+        account.email = req.body.email;
+        account.age = req.body.age;
+        //Save the new options for each question if they are selected
+
+        account.save((err, account) =>
+        {
+            if (err) console.error(err);
+            console.log(`${account.username} was updated`);
+        });
+    });
+    res.redirect('/');
 };
 
 //This is a get for site/login
@@ -96,24 +125,27 @@ exports.login = (req, res) =>
 {
     //pull from database and compare with req values
     /*
-    
-    example for password
-    if (bcrypt.compareSync(req.body.password, HASH FROM DATABASE));
-        login, create cookie?
-
+        example for password
+        if (bcrypt.compareSync(req.body.password, HASH FROM DATABASE));
+            login, create cookie?
     */
+
     Account.findOne({ username: req.body.username }, (err, data) => 
     {
         let password = data.password;
-        if (bcrypt.compareSync(req.body.password, password))
+        bcrypt.compare(req.body.password, password, (err, success) =>
         {
-            req.session.user =
+            if (err) return console.error(err);
+            if (success)
             {
-                isAuthenticated: true,
-                username: req.body.username
+                req.session.user =
+                {
+                    isAuthenticated: true,
+                    username: req.body.username
+                }
+                res.redirect('/');
             }
-            res.redirect('/');
-        }
+        });
     });
 };
 
@@ -131,8 +163,9 @@ exports.logout = (req, res) =>
     {
         if (err)
         {
-            console.log(err);
-        } else
+            return console.log(err);
+        }
+        else
         {
             res.redirect('/');
         }

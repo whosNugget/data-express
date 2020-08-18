@@ -1,13 +1,12 @@
 extends layout
 
 block content
-    span=JSON.stringify(config)
 
     #user
         h1 Index
         h3
             if config && config.user
-                span Lookie here, this guy is logged in as #{user.username}!
+                span Lookie here, this guy is logged in as #{config.user.username}!&nbsp;
                 a(href="/logout") Want to change that?
             else
                 span Yeah there isn't much here... maybe try 

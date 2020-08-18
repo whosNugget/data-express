@@ -1,7 +1,5 @@
 extends layout
 
-- let selected = {color: config.color, game: config.game, phrase: config.phrase};
-
 block content
     form(method="post" action="/edit")
         label(for="email") Email: 
@@ -11,10 +9,10 @@ block content
         input(type="text" name="username" placeholder="Username" value=config.username)
         br
         label(for="password") Change Password: 
-        input(type="password", name="password" placeholder="Password")
+        input(type="password", name="password" placeholder="Only enter a new password if you wish to change it")
         br
         label(for="confirmPassword") Confirm Password: 
-        input(type="password", name="confirmPassword" placeholder="Confirm Password")
+        input(type="password", name="confirmPassword" placeholder="Only enter a new password if you wish to change it")
         br
         label(for="age") Age: 
         input(type="number" name="age" placeholder="18" value=config.age)

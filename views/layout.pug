@@ -5,6 +5,13 @@ html
     link(rel="stylesheet" type="text/css" href="styles/main.css")
 
 body
+    //- Create a unanimous navigation system that responds when you are logged in
+
+    if config
+        span=JSON.stringify(config)
+        br
+        br
+
     block content
 
     script(src="scripts/main.js")

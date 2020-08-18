@@ -20,10 +20,11 @@ app.use((req, res, next) =>
 
 const checkAuth = (req, res, next) =>
 {
-    if (req.session.user && res.session.user.isAuthenticated)
+    if (req.session && req.session.user && req.session.user.isAuthenticated)
     {
         next();
-    } else
+    }
+    else
     {
         res.redirect('/');
     }
