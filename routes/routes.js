@@ -97,9 +97,6 @@ exports.login = (req, res) =>
         login, create cookie?
 
     */
-   if(Account.find({username: req.body.username}) != null) {
-        console.log('personFound');
-   }
 };
 
 exports.index = (req, res) =>
