@@ -97,9 +97,9 @@ exports.login = (req, res) =>
         login, create cookie?
 
     */
-   Account.collection.findOne({ username: req.body.username },(err, data) => {
+   Account.findOne({ username: req.body.username },(err, data) => {
         let password = data.password;
-        
+
    });
 };
 
