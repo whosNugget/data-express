@@ -19,21 +19,37 @@ block content
         label(for="age") Age: 
         input(type="number" name="age" placeholder="18" value=config.age)
         br
-        label(for="favoriteColor") What is your favorite color?
-        input(type="radio" name="favoriteColor" value="Orange" selected=(this.value === selected.color))
-        input(type="radio" name="favoriteColor" value="Purple" selected=(this.value === selected.color))
-        input(type="radio" name="favoriteColor" value="Cyan" selected=(this.value === selected.color))
-        input(type="radio" name="favoriteColor" value="Olive Drab" selected=(this.value === selected.color))
+        label What is your favorite color?
+            br
+            input(type="radio" id="Orange" name="favoriteColor" value="Orange")
+            label(for="Orange") Orange
+            input(type="radio" id="Purple" name="favoriteColor" value="Purple")
+            label(for="Purple") Purple
+            input(type="radio" id="Cyan" name="favoriteColor" value="Cyan")
+            label(for="Cyan") Cyan
+            input(type="radio" id="OliveDrab" name="favoriteColor" value="Olive Drab")
+            label(for="OliveDrab") Olive Drab
         br
-        label(for="betterVideogame") Which video game is better?
-        input(type="radio" name="betterVideogame" value="Halo" selected=(this.value === selected.game))
-        input(type="radio" name="betterVideogame" value="call of Dury" selected=(this.value === selected.game))
-        input(type="radio" name="betterVideogame" value="Battlefield" selected=(this.value === selected.game))
-        input(type="radio" name="betterVideogame" value="Super Mario" selected=(this.value === selected.game))
+        label Which video game is better?
+            br
+            input(type="radio" id="Halo" name="betterVideogame" value="Halo")
+            label(for="Halo") Halo
+            input(type="radio" id="COD" name="betterVideogame" value="call of Duty")
+            label(for="COD") Call of Duty
+            input(type="radio" id="Battlefield" name="betterVideogame" value="Battlefield")
+            label(for="Battlefield") Battlefield
+            input(type="radio" id="SuperMario" name="betterVideogame" value="Super Mario")
+            label(for="SuperMario") Super Mario (Anything)
         br
-        label(for="perferredPhrase") Which phrase do you prefer?
-        input(type="radio" name="preferredPhrase" value="Glass Half Empty" selected=(this.value == selected.phrase))
-        input(type="radio" name="preferredPhrase" value="Glass Half Full" selected=(this.value == selected.phrase))
-        input(type="radio" name="preferredPhrase" value="Tomorrow is a new day" selected=(this.value == selected.phrase))
-        input(type="radio" name="preferredPhrase" value="I am tired" selected=(this.value == selected.phrase))
+        label Which do you prefer?
+            br
+            input(type="radio" id="HalfEmpty" name="preferredPhrase" value="Glass Half Empty")
+            label(for="HalfEmpty") Glass Half Empty
+            input(type="radio" id="HalfFull" name="preferredPhrase" value="Glass Half Full")
+            label(for="HalfFull") Glass Half Full
+            input(type="radio" id="NewDay" name="preferredPhrase" value="Tomorrow is a new day")
+            label(for="NewDay") Tommorrow is a new day
+            input(type="radio" id="Tired" name="preferredPhrase" value="I am tired")
+            label(for="Tired") I am tired
+        br
         input(type="submit" value="Update Account")
