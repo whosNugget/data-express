@@ -18,6 +18,17 @@ app.use((req, res, next) =>
     next();
 });
 
+const checkAuth = (req, res, next) =>
+{
+    if (req.session.user && res.session.user.isAuthenticated)
+    {
+        next();
+    }else
+    {
+        res.redirect('/');
+    }
+}
+
 app.use(expressSession(
     {
         secret: 'dewoitine',
@@ -33,7 +44,8 @@ let urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
 
-app.get('/edit', routes.editPage);
+app.get('/logout', routes.logout);
+app.get('/edit', checkAuth, routes.editPage);
 app.post('/edit', urlencodedParser, routes.edit);
 app.get('/create', routes.createPage);
 app.post('/create', urlencodedParser, routes.createUser);
