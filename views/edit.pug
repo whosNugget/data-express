@@ -3,7 +3,7 @@ extends layout
 - let selected = {color: config.color, game: config.game, phrase: config.phrase};
 
 block content
-    form(method="post" action="/login")
+    form(method="post" action="/edit")
         label(for="email") Email: 
         input(type="text" name="email" placeholder="Email" value=config.email)
         br
