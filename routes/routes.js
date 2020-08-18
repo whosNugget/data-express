@@ -78,15 +78,6 @@ exports.editPage = (req, res) =>
 exports.edit = (req, res) =>
 {
     //Logic for editing user
-
-    /*
-    req.session.user = 
-    {
-        isAuthenticated: true,
-        username: req.body.username
-    }
-    res.redirect('/');
-    */
 };
 
 //This is a get for site/login
@@ -106,24 +97,13 @@ exports.login = (req, res) =>
         login, create cookie?
 
     */
-   
+   Account.findOne({ username: req.body.username },(err, data) => {
+        let password = data.password;
+
+   });
 };
 
 exports.index = (req, res) =>
 {
     res.render('index');
-};
-
-exports.logout = (req, res) =>
-{
-    req.session.destroy(err =>
-    {
-        if (err)
-        {
-            console.log(err);
-        }else
-        {
-            res.redirect('/');
-        }
-    });
 };
