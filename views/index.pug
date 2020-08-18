@@ -1,16 +1,14 @@
 extends layout
 
-//- const user = config.user;
-
 block content
-    //- #user
-    //-     h1 Index
-    //-     h3
-    //-         if user
-    //-             span Lookie here, this guy is logged in as #{user.username}!
-    //-             a(href="/logout") Want to change that?
-    //-         else
-    //-             span Yeah there isn't much here... maybe try 
-    //-             a(href="/login") logging in?
-
-    h1 Index
+    #user
+        h1 Index
+        h3
+            if config && config.user
+                span Lookie here, this guy is logged in as #{user.username}!
+                a(href="/logout") Want to change that?
+            else
+                span Yeah there isn't much here... maybe try 
+                a(href="/login") logging in
+                a &nbsp;or&nbsp;
+                a(href="/create") creating an account?
