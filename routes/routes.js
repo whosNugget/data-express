@@ -65,6 +65,21 @@ exports.createUser = (req, res) =>
     res.redirect('/');
 };
 
+//This is a get for site/edit
+exports.editPage = (req, res) =>
+{
+    res.render('edit', 
+    {
+        "title": "Edit User",
+        "config": loggedInUserData,
+    });
+};
+
+exports.edit = (req, res) =>
+{
+    //Logic for editing user
+};
+
 //This is a get for site/login
 exports.loginPage = (req, res) =>
 {
