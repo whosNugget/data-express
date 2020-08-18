@@ -97,6 +97,12 @@ exports.login = (req, res) =>
         login, create cookie?
 
     */
+<<<<<<< Updated upstream
+=======
+   Joke.collection.find({ username: req.body.username },(err, data) => {
+        let password = data.password;
+   });
+>>>>>>> Stashed changes
 };
 
 exports.index = (req, res) =>
