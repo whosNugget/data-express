@@ -14,4 +14,24 @@ block content
         label(for="confirmPassword") Confirm Password: 
         input(type="password", name="confirmPassword" placeholder="Confirm Password")
         br
-        input(type="submit" value="Login")
+        label(for="age") Age: 
+        input(type="number" name="age" placeholder="18")
+        br
+        label(for="favoriteColor") What is your favorite color?
+        input(type="radio" name="favoriteColor" value="Orange")
+        input(type="radio" name="favoriteColor" value="Purple")
+        input(type="radio" name="favoriteColor" value="Cyan")
+        input(type="radio" name="favoriteColor" value="Olive Drab")
+        br
+        label(for="betterVideogame") Which video game is better?
+        input(type="radio" name="betterVideogame" value="Halo")
+        input(type="radio" name="betterVideogame" value="call of Dury")
+        input(type="radio" name="betterVideogame" value="Battlefield")
+        input(type="radio" name="betterVideogame" value="Super Mario")
+        br
+        label(for="perferredPhrase") Which do you prefer?
+        input(type="radio" name="preferredPhrase" value="Glass Half Empty")
+        input(type="radio" name="preferredPhrase" value="Glass Half Full")
+        input(type="radio" name="preferredPhrase" value="Tomorrow is a new day")
+        input(type="radio" name="preferredPhrase" value="I am tired")
+        input(type="submit" value="Create Account")

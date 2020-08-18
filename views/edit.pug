@@ -1,0 +1,39 @@
+extends layout
+
+- let selected = {color: config.color, game: config.game, phrase: config.phrase};
+
+block content
+    form(method="post" action="/login")
+        label(for="email") Email: 
+        input(type="text" name="email" placeholder="Email" value=config.email)
+        br
+        label(for="username") Username: 
+        input(type="text" name="username" placeholder="Username" value=config.username)
+        br
+        label(for="password") Change Password: 
+        input(type="password", name="password" placeholder="Password")
+        br
+        label(for="confirmPassword") Confirm Password: 
+        input(type="password", name="confirmPassword" placeholder="Confirm Password")
+        br
+        label(for="age") Age: 
+        input(type="number" name="age" placeholder="18" value=config.age)
+        br
+        label(for="favoriteColor") What is your favorite color?
+        input(type="radio" name="favoriteColor" value="Orange" selected=(this.value === selected.color))
+        input(type="radio" name="favoriteColor" value="Purple" selected=(this.value === selected.color))
+        input(type="radio" name="favoriteColor" value="Cyan" selected=(this.value === selected.color))
+        input(type="radio" name="favoriteColor" value="Olive Drab" selected=(this.value === selected.color))
+        br
+        label(for="betterVideogame") Which video game is better?
+        input(type="radio" name="betterVideogame" value="Halo" selected=(this.value === selected.game))
+        input(type="radio" name="betterVideogame" value="call of Dury" selected=(this.value === selected.game))
+        input(type="radio" name="betterVideogame" value="Battlefield" selected=(this.value === selected.game))
+        input(type="radio" name="betterVideogame" value="Super Mario" selected=(this.value === selected.game))
+        br
+        label(for="perferredPhrase") Which phrase do you prefer?
+        input(type="radio" name="preferredPhrase" value="Glass Half Empty" selected=(this.value == selected.phrase))
+        input(type="radio" name="preferredPhrase" value="Glass Half Full" selected=(this.value == selected.phrase))
+        input(type="radio" name="preferredPhrase" value="Tomorrow is a new day" selected=(this.value == selected.phrase))
+        input(type="radio" name="preferredPhrase" value="I am tired" selected=(this.value == selected.phrase))
+        input(type="submit" value="Update Account")

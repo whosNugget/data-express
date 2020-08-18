@@ -1,6 +1,7 @@
 const express = require('express');
 const expressSession = require('express-session');
 const bodyParser = require('body-parser');
+const path = require('path');
 const pug = require('pug');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
@@ -18,11 +19,11 @@ app.use((req, res, next) =>
 });
 
 app.use(expressSession(
-{
-    secret: 'dewoitine',
-    saveUninitialized: true,
-    resave: true
-}));
+    {
+        secret: 'dewoitine',
+        saveUninitialized: true,
+        resave: true
+    }));
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/views'));
@@ -32,6 +33,8 @@ let urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
 
+app.get('/edit', routes.editPage);
+app.post('/edit', urlencodedParser, routes.edit);
 app.get('/create', routes.createPage);
 app.post('/create', urlencodedParser, routes.createUser);
 app.get('/login', routes.loginPage);

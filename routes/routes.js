@@ -42,16 +42,19 @@ exports.createUser = (req, res) =>
     //password  - req.body.password
 
     let salt = bcrypt.genSaltSync(10);
-    let hash = bcrypt.hashSync(req.body.password, salt);
+    let hashPassword = bcrypt.hashSync(req.body.password, salt);
+    let hashQ1 = bcrypt.hashSync(req.body.favoriteColor, salt);
+    let hashQ2 = bcrypt.hashSync(req.body.betterVideogame, salt)
+    let hashQ3 = bcrypt.hashSync(req.body.preferredPhrase, salt)
 
     let account = new Account({
         email: req.body.email,
         username: req.body.username,
-        password: hash,
+        password: hashPassword,
         age: req.body.age,
-        securityQuestion1: req.body.securityQuestion1,
-        securityQuestion2: req.body.securityQuestion2,
-        securityQuestion3: req.body.securityQuestion3
+        securityQuestion1: hashQ1,
+        securityQuestion2: hashQ2,
+        securityQuestion3: hashQ3
     });
 
     account.save((err, account) => {
@@ -60,6 +63,21 @@ exports.createUser = (req, res) =>
     });
 
     res.redirect('/');
+};
+
+//This is a get for site/edit
+exports.editPage = (req, res) =>
+{
+    res.render('edit', 
+    {
+        "title": "Edit User",
+        "config": loggedInUserData,
+    });
+};
+
+exports.edit = (req, res) =>
+{
+    //Logic for editing user
 };
 
 //This is a get for site/login
