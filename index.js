@@ -34,7 +34,7 @@ let urlencodedParser = bodyParser.urlencoded({
 });
 
 app.get('/edit', routes.editPage);
-app.post('/edit', routes.edit);
+app.post('/edit', urlencodedParser, routes.edit);
 app.get('/create', routes.createPage);
 app.post('/create', urlencodedParser, routes.createUser);
 app.get('/login', routes.loginPage);
