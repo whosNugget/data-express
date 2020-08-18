@@ -23,18 +23,17 @@ const checkAuth = (req, res, next) =>
     if (req.session.user && res.session.user.isAuthenticated)
     {
         next();
-    }else
+    } else
     {
         res.redirect('/');
     }
 }
 
-app.use(expressSession(
-    {
-        secret: 'dewoitine',
-        saveUninitialized: true,
-        resave: true
-    }));
+app.use(expressSession({
+    secret: 'dewoitine',
+    saveUninitialized: true,
+    resave: true
+}));
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/views'));

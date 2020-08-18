@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const expressSession = require('express-session');
 const bcrypt = require('bcryptjs');
 mongoose.Promise = global.Promise;
 
@@ -10,7 +9,8 @@ mongoose.connect('mongodb+srv://Unlikeplatypus:GkrB98JzriDkoLVI@cluster0.2dtjh.m
 
 let mdb = mongoose.connection;
 mdb.on('error', console.error.bind(console, 'connection error'));
-mdb.once('open', callback => {
+mdb.once('open', callback =>
+{
 
 });
 
@@ -29,7 +29,9 @@ let Account = mongoose.model('Account_Collection', accountSchema);
 //This is a get for site/create
 exports.createPage = (req, res) =>
 {
-    res.render('create');
+    res.render('create', {
+        "title": "Create User",
+    });
 };
 
 //This is a post for site/create
@@ -57,8 +59,9 @@ exports.createUser = (req, res) =>
         securityQuestion3: hashQ3
     });
 
-    account.save((err, account) => {
-        if(err) return console.error(err);
+    account.save((err, account) =>
+    {
+        if (err) return console.error(err);
         console.log(req.body.username + 'added');
     });
 
@@ -68,11 +71,11 @@ exports.createUser = (req, res) =>
 //This is a get for site/edit
 exports.editPage = (req, res) =>
 {
-    res.render('edit', 
-    {
-        "title": "Edit User",
-        "config": loggedInUserData,
-    });
+    res.render('edit',
+        {
+            "title": "Edit User",
+            "config": loggedInUserData,
+        });
 };
 
 exports.edit = (req, res) =>
@@ -83,7 +86,9 @@ exports.edit = (req, res) =>
 //This is a get for site/login
 exports.loginPage = (req, res) =>
 {
-    res.render('login');
+    res.render('login', {
+        "title": "Login"
+    });
 };
 
 //This is a post for site/login
@@ -97,8 +102,8 @@ exports.login = (req, res) =>
         login, create cookie?
 
     */
-   Account.findOne({ username: req.body.username },(err, data) => 
-   {
+    Account.findOne({ username: req.body.username }, (err, data) => 
+    {
         let password = data.password;
         if (bcrypt.compareSync(req.body.password, password))
         {
@@ -109,12 +114,15 @@ exports.login = (req, res) =>
             }
             res.redirect('/');
         }
-   });
+    });
 };
 
 exports.index = (req, res) =>
 {
-    res.render('index');
+    res.render('index', {
+        "title": "Index",
+        "config": req.session.user,
+    });
 };
 
 exports.logout = (req, res) =>
