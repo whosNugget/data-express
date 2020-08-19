@@ -42,41 +42,39 @@ exports.createUser = (req, res) =>
     //email     - req.body.email
     //username  - req.body.username
     //password  - req.body.password
+    let userExists = false;
+    Account.findOne({ username: req.body.username }, (err, account) => {
+        if (err) return console.error(err);
 
-    Account.find({username: req.body.username}, (err, account) =>
-    {
-        if(err) return  console.error(err);
-
-        if(account)
-        {
+        if (account) {
             res.redirect('/create');
             return;
         }
+
+        let salt = bcrypt.genSaltSync(10);
+        let hashPassword = bcrypt.hashSync(req.body.password, salt);
+        let hashQ1 = bcrypt.hashSync(req.body.favoriteColor, salt);
+        let hashQ2 = bcrypt.hashSync(req.body.betterVideogame, salt)
+        let hashQ3 = bcrypt.hashSync(req.body.preferredPhrase, salt)
+
+        let newAccount = new Account({
+            email: req.body.email,
+            username: req.body.username,
+            password: hashPassword,
+            age: req.body.age,
+            securityQuestion1: hashQ1,
+            securityQuestion2: hashQ2,
+            securityQuestion3: hashQ3
+        });
+
+        newAccount.save((err, newAccount) => {
+            if (err) return console.error(err);
+            console.log(req.body.username + 'added');
+        });
+
+        res.redirect('/');
+
     });
-
-    let salt = bcrypt.genSaltSync(10);
-    let hashPassword = bcrypt.hashSync(req.body.password, salt);
-    let hashQ1 = bcrypt.hashSync(req.body.favoriteColor, salt);
-    let hashQ2 = bcrypt.hashSync(req.body.betterVideogame, salt)
-    let hashQ3 = bcrypt.hashSync(req.body.preferredPhrase, salt)
-
-    let account = new Account({
-        email: req.body.email,
-        username: req.body.username,
-        password: hashPassword,
-        age: req.body.age,
-        securityQuestion1: hashQ1,
-        securityQuestion2: hashQ2,
-        securityQuestion3: hashQ3
-    });
-
-    account.save((err, account) =>
-    {
-        if (err) return console.error(err);
-        console.log(req.body.username + 'added');
-    });
-
-    res.redirect('/');
 };
 
 //This is a get for site/edit
