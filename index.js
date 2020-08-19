@@ -53,5 +53,6 @@ app.get('/login', routes.loginPage);
 app.post('/login', urlencodedParser, routes.login);
 app.get('/index', routes.index);
 app.get('/', routes.index);
+app.get('*', routes.index);
 
 app.listen(3000);
