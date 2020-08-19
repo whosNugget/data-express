@@ -3,10 +3,10 @@ extends layout
 block content
     form(method="post" action="/edit")
         label(for="email") Email: 
-        input(type="text" name="email" placeholder="Email" value=config.email)
+        input(type="text" name="email" placeholder="Email" value=config.email required)
         br
         label(for="username") Username: 
-        input(type="text" name="username" placeholder="Username" value=config.username)
+        input(type="text" name="username" placeholder="Username" value=config.username required)
         br
         label(for="password") Change Password: 
         input(type="password", name="password" placeholder="Only enter a new password if you wish to change it")
@@ -15,39 +15,39 @@ block content
         input(type="password", name="confirmPassword" placeholder="Only enter a new password if you wish to change it")
         br
         label(for="age") Age: 
-        input(type="number" name="age" placeholder="18" value=config.age)
+        input(type="number" name="age" placeholder="18" value=config.age required)
         br
         label What is your favorite color?
             br
-            input(type="radio" id="Orange" name="favoriteColor" value="Orange")
+            input(type="radio" id="Orange" name="favoriteColor" value="Orange" required)
             label(for="Orange") Orange
-            input(type="radio" id="Purple" name="favoriteColor" value="Purple")
+            input(type="radio" id="Purple" name="favoriteColor" value="Purple" required)
             label(for="Purple") Purple
-            input(type="radio" id="Cyan" name="favoriteColor" value="Cyan")
+            input(type="radio" id="Cyan" name="favoriteColor" value="Cyan" required)
             label(for="Cyan") Cyan
-            input(type="radio" id="OliveDrab" name="favoriteColor" value="Olive Drab")
+            input(type="radio" id="OliveDrab" name="favoriteColor" value="Olive Drab" required)
             label(for="OliveDrab") Olive Drab
         br
         label Which video game is better?
             br
-            input(type="radio" id="Halo" name="betterVideogame" value="Halo")
+            input(type="radio" id="Halo" name="betterVideogame" value="Halo" required)
             label(for="Halo") Halo
-            input(type="radio" id="COD" name="betterVideogame" value="call of Duty")
+            input(type="radio" id="COD" name="betterVideogame" value="call of Duty" required)
             label(for="COD") Call of Duty
-            input(type="radio" id="Battlefield" name="betterVideogame" value="Battlefield")
+            input(type="radio" id="Battlefield" name="betterVideogame" value="Battlefield" required)
             label(for="Battlefield") Battlefield
-            input(type="radio" id="SuperMario" name="betterVideogame" value="Super Mario")
+            input(type="radio" id="SuperMario" name="betterVideogame" value="Super Mario" required)
             label(for="SuperMario") Super Mario (Anything)
         br
         label Which do you prefer?
             br
-            input(type="radio" id="HalfEmpty" name="preferredPhrase" value="Glass Half Empty")
+            input(type="radio" id="HalfEmpty" name="preferredPhrase" value="Glass Half Empty" required)
             label(for="HalfEmpty") Glass Half Empty
-            input(type="radio" id="HalfFull" name="preferredPhrase" value="Glass Half Full")
+            input(type="radio" id="HalfFull" name="preferredPhrase" value="Glass Half Full" required)
             label(for="HalfFull") Glass Half Full
-            input(type="radio" id="NewDay" name="preferredPhrase" value="Tomorrow is a new day")
+            input(type="radio" id="NewDay" name="preferredPhrase" value="Tomorrow is a new day" required)
             label(for="NewDay") Tommorrow is a new day
-            input(type="radio" id="Tired" name="preferredPhrase" value="I am tired")
+            input(type="radio" id="Tired" name="preferredPhrase" value="I am tired" required)
             label(for="Tired") I am tired
         br
         input(type="submit" value="Update Account")
