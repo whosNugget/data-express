@@ -43,6 +43,16 @@ exports.createUser = (req, res) =>
     //username  - req.body.username
     //password  - req.body.password
 
+    Account.find({username: req.body.username}, (err, account) =>
+    {
+        if(err) return  console.error(err);
+
+        if(account)
+        {
+            res.redirect('/create');
+        }
+    });
+
     let salt = bcrypt.genSaltSync(10);
     let hashPassword = bcrypt.hashSync(req.body.password, salt);
     let hashQ1 = bcrypt.hashSync(req.body.favoriteColor, salt);
