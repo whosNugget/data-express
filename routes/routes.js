@@ -50,6 +50,7 @@ exports.createUser = (req, res) =>
         if(account)
         {
             res.redirect('/create');
+            return;
         }
     });
 
