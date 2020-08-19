@@ -161,7 +161,10 @@ exports.login = (req, res) =>
 
 exports.index = (req, res) =>
 {
-    res.cookie('lastVisited', Date.now, {maxAge: 9999999999999999});
+    let date = new Date();
+    date = Date.now();
+
+    res.cookie('lastVisited', date, {maxAge: 9999999999999999});
 
     res.render('index', {
         "title": "Index",
