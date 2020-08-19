@@ -1,1 +1,7 @@
-/* No CSS *//*# sourceMappingURL=main.css.map */
+#date {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1.5vh 1.5vw;
+}
+/*# sourceMappingURL=main.css.map */
