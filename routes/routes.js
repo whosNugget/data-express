@@ -151,6 +151,8 @@ exports.login = (req, res) =>
 
 exports.index = (req, res) =>
 {
+    res.cookie('lastVisited', Date.now().toString(), {maxAge: 9999999999999999});
+
     res.render('index', {
         "title": "Index",
         "config": req.session,
