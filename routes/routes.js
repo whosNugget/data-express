@@ -141,20 +141,26 @@ exports.login = (req, res) =>
 
     Account.findOne({ username: req.body.username }, (err, data) => 
     {
-        let password = data.password;
-        bcrypt.compare(req.body.password, password, (err, success) =>
+        if (data)
         {
-            if (err) return console.error(err);
-            if (success)
+            let password = data.password;
+            bcrypt.compare(req.body.password, password, (err, success) =>
             {
-                req.session.user =
+                if (err) return console.error(err);
+                if (success)
                 {
-                    isAuthenticated: true,
-                    username: req.body.username
+                    req.session.user =
+                    {
+                        isAuthenticated: true,
+                        username: req.body.username
+                    }
+                    res.redirect('/');
                 }
-                res.redirect('/');
-            }
-        });
+            });
+        }else
+        {
+            res.redirect('/login');
+        }
     });
 };
 
