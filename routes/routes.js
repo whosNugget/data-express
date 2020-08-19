@@ -166,6 +166,7 @@ exports.index = (req, res) =>
     res.render('index', {
         "title": "Index",
         "config": req.session,
+        "lastVisited": req.cookies.lastVisited
     });
 };
 
