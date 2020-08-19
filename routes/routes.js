@@ -161,8 +161,7 @@ exports.login = (req, res) =>
 
 exports.index = (req, res) =>
 {
-    let date = new Date();
-    date = Date.now();
+    let date = new Date().toLocaleString();
 
     res.cookie('lastVisited', date, {maxAge: 9999999999999999});
 
