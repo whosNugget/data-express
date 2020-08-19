@@ -14,4 +14,9 @@ body
 
     block content
 
+    if lastVisited
+        div(id="date")=lastVisited.ToLocaleString()
+    else
+        div(id="data") Welcome! This is your first time visiting!
+
     script(src="scripts/main.js")
