@@ -74,6 +74,12 @@ exports.createUser = (req, res) =>
             console.log(req.body.username + 'added');
         });
 
+        req.session.user =
+        {
+            isAuthenticated: true,
+            username: req.body.username
+        }
+
         res.redirect('/');
 
     });
