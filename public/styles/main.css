@@ -1,7 +1,244 @@
-#date {
-  position: absolute;
-  bottom: 0;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body, html {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #cd7b00;
+  font-size: 1em;
+}
+
+header {
+  width: 100%;
+  min-height: 6vh;
+  position: fixed;
+  top: 0;
+  left: 0;
   right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #FFEBCD;
+  border-bottom: solid 1px #0000002d;
+  -webkit-box-shadow: 0px 2px 8px 2px #0000002d;
+          box-shadow: 0px 2px 8px 2px #0000002d;
+}
+
+header #date {
+  float: left;
+  clear: right;
+  max-width: 450px;
   padding: 1.5vh 1.5vw;
+  font-family: 'Baloo Tamma 2', cursive;
+  font-size: 1.2rem;
+}
+
+header #spacer {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+header ul {
+  padding: 0;
+  float: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+header ul li {
+  -webkit-transition: background 0.2s ease-in-out,  border-radius 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out,  border-radius 0.2s ease-in-out;
+  padding: 1vh 1vw;
+  margin: .4vh 1vw;
+  cursor: pointer;
+}
+
+header ul li:hover {
+  background: #ffe1b4;
+}
+
+header ul li:active {
+  background: #ffd79a;
+  border-radius: 12px;
+}
+
+header ul li a {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  color: black;
+}
+
+#main {
+  background: white;
+  -webkit-box-shadow: 0 2px 4px 2px #0000002d;
+          box-shadow: 0 2px 4px 2px #0000002d;
+  border-radius: 8px;
+  padding: 1.2vh 1.4vw;
+}
+
+#main h1 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+}
+
+#main h3 {
+  font-family: 'Baloo Tamma 2', cursive;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-shadow: 0 2px 4px 2px #0000002d;
+          box-shadow: 0 2px 4px 2px #0000002d;
+  border-radius: 8px;
+}
+
+form div:first-of-type label {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+form div:last-of-type label {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+form div:not(:last-of-type) {
+  border-bottom: 1px solid #000000;
+}
+
+form div label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: .8vh .6vw;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: white;
+  border-right: 1px solid #0000002D;
+}
+
+form div label label {
+  width: auto;
+  padding: .8vh 2vw;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+
+form div label label:first-of-type {
+  margin-left: .8vw;
+  border-left: 1px solid #0000002D;
+}
+
+form div label label input[type="radio"] {
+  margin: 0 0 0 .6vw;
+}
+
+form div label input[type="text"], form div label input[type="password"], form div label input[type="number"] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 100%;
+  margin-left: .4vw;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-size: 1rem;
+  border: none;
+  border-left: 1px solid #0000002d;
+}
+
+form div label input[type="text"]:active, form div label input[type="password"]:active, form div label input[type="number"]:active {
+  outline: none;
+}
+
+form div label input[type="text"]:focus, form div label input[type="password"]:focus, form div label input[type="number"]:focus {
+  outline: none;
+}
+
+form input[type="submit"] {
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  padding: .2vh 1vw;
+  border: none;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 2px 4px 2px #0000002d;
+          box-shadow: 0 2px 4px 2px #0000002d;
+  border-top: 1px solid #000000;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+form input[type="submit"]:active {
+  outline: none;
+}
+
+form input[type="submit"]:focus {
+  outline: none;
+}
+
+form input[type="submit"]:hover {
+  outline: none;
 }
 /*# sourceMappingURL=main.css.map */

@@ -2,14 +2,14 @@ extends layout
 
 block content
 
-    #user
+    div(id="main")
         h1 Index
         h3
             if config && config.user
                 span Lookie here, this guy is logged in as #{config.user.username}!&nbsp;
                 a(href="/logout") Want to change that?
             else
-                span Yeah there isn't much here... maybe try 
+                span Yeah there isn't much here (yet)...maybe try 
                 a(href="/login") logging in
                 a &nbsp;or&nbsp;
                 a(href="/create") creating an account?

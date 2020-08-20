@@ -1,7 +1,228 @@
-#date
+* { box-sizing: border-box; }
+
+body, html
 {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 1.5vh 1.5vw;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #cd7b00;
+    font-size: 1em;
+}
+
+header
+{
+    width: 100%;
+    min-height: 6vh;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: #FFEBCD;
+    border-bottom: solid 1px #0000002d;
+    box-shadow: 0px 2px 8px 2px #0000002d;
+
+    #date
+    {
+        float: left;
+        clear: right;
+        max-width: 450px;
+        padding: 1.5vh 1.5vw;
+        font-family: 'Baloo Tamma 2', cursive; 
+        font-size: 1.2rem;
+    }
+
+    #spacer
+    {
+        flex-grow: 1;
+    }
+
+    ul
+    {
+        padding: 0;
+        float: right;
+        display: flex;
+        list-style-type: none;
+        flex-direction: row;
+        
+        li
+        {
+            transition: background 0.2s ease-in-out, 
+                        border-radius 0.2s ease-in-out;
+            padding: 1vh 1vw;
+            margin: .4vh 1vw;
+            cursor: pointer;
+
+            &:hover
+            {
+                background: #ffe1b4
+            }
+            &:active
+            {
+                background: #ffd79a;
+                border-radius: 12px;
+            }
+
+            a
+            {
+                font-family: 'Roboto', sans-serif;
+                font-size: 1rem;
+                text-decoration: none;
+                color: black;
+            }
+        }
+    }
+}
+
+#main
+{
+    background: white;
+    box-shadow: 0 2px 4px 2px #0000002d;
+    border-radius: 8px;
+    padding: 1.2vh 1.4vw;
+
+    h1
+    {
+        font-family: 'Russo One', sans-serif;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    h3
+    {
+        font-family: 'Baloo Tamma 2', cursive;
+        font-size: 1.8rem;
+        text-align: center;
+    }
+}
+
+form
+{
+    text-align: center;
+
+    div 
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        flex-grow: 1;
+
+        box-shadow: 0 2px 4px 2px #0000002d;
+        border-radius: 8px;
+        
+        &:first-of-type
+        {
+            label
+            {
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+            }
+        }
+        &:last-of-type
+        {
+            label
+            {
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+        }
+        &:not(:last-of-type)
+        {
+            border-bottom: 1px solid #000000;
+        }
+
+        label
+        {
+            display: flex;
+            align-items: center;
+            padding: .8vh .6vw;
+            width: 100%;
+
+            font-family: 'Roboto', sans-serif; 
+            background: white;
+            border-right: 1px solid #0000002D;
+
+            label
+            {
+                &:first-of-type
+                {
+                    margin-left: .8vw;
+                    border-left: 1px solid #0000002D;
+                }
+
+                //create/edit multiple choice sections
+                width: auto;
+                padding: .8vh 2vw;
+                flex-grow: 1;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                border: none;
+                
+                input[type="radio"]
+                {
+                    margin: 0 0 0 .6vw;
+                }
+            }
+
+            input[type="text"], input[type="password"], input[type="number"]
+            {
+                display: flex;
+                align-items: center;
+                line-height: 100%;
+                margin-left: .4vw;
+                flex-grow: 1;
+    
+                //font-family: 'Baloo Tamma 2', cursive; 
+                font-size: 1rem;
+                border: none;
+                border-left: 1px solid #0000002d;
+    
+                &:active
+                {
+                    outline: none;
+                }
+                &:focus
+                {
+                    outline: none;
+                }
+            }
+        }
+
+    }
+
+    input[type="submit"]
+    {
+        cursor: pointer;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.1rem;
+        padding: .2vh 1vw;
+        border: none;
+        margin: 0 auto;
+
+        box-shadow: 0 2px 4px 2px #0000002d;
+
+        border-top: 1px solid #000000;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+        &:active
+        {
+            outline: none;
+        }
+        &:focus
+        {
+            outline: none;
+        }
+        &:hover
+        {
+            outline: none;
+        }
+    }
 }

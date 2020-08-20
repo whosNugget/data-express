@@ -6,17 +6,37 @@ html
 
 body
     //- Create a unanimous navigation system that responds when you are logged in
+    header
+        div(id="date")
+            if lastVisited
+                span Last Visited: #{lastVisited}
+            else
+                span You have cookies disabled! We can't show you the last time you visited!
 
-    if config
-        span=JSON.stringify(config)
-        br
-        br
+        div(id="spacer")
+
+        ul
+            li
+                a(href="/index") Home
+                
+            if config  && config.user && config.user.isAuthenticated
+                //-User is logged in
+                li
+                    a(href="/logout") Log Out
+                li
+                    a(href="/edit") Edit Account
+            else
+                //- User is not logged in
+                li
+                    a(href="/login") Log In
+                li
+                    a(href="/create") Create Account
+
+    //- if config
+    //-     span=JSON.stringify(config)
+    //-     br
+    //-     br
 
     block content
 
-    if lastVisited
-        div(id="date") Last Visited: #{lastVisited}
-    else
-        div(id="date") You have cookies disabled! We can't show you the last time you visited!
-
-    script(src="scripts/main.js")
+    //-script(src="scripts/main.js")

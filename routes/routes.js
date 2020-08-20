@@ -9,10 +9,7 @@ mongoose.connect('mongodb+srv://Unlikeplatypus:GkrB98JzriDkoLVI@cluster0.2dtjh.m
 
 let mdb = mongoose.connection;
 mdb.on('error', console.error.bind(console, 'connection error'));
-mdb.once('open', callback =>
-{
-
-});
+mdb.once('open', callback => { });
 
 let accountSchema = mongoose.Schema({
     username: String,
@@ -31,6 +28,8 @@ exports.createPage = (req, res) =>
 {
     res.render('create', {
         "title": "Create User",
+        "config": req.session,
+        "lastVisited": req.cookies.lastVisited
     });
 };
 
@@ -43,10 +42,12 @@ exports.createUser = (req, res) =>
     //username  - req.body.username
     //password  - req.body.password
     let userExists = false;
-    Account.findOne({ username: req.body.username }, (err, account) => {
+    Account.findOne({ username: req.body.username }, (err, account) =>
+    {
         if (err) return console.error(err);
 
-        if (account) {
+        if (account)
+        {
             res.redirect('/create');
             return;
         }
@@ -67,7 +68,8 @@ exports.createUser = (req, res) =>
             securityQuestion3: hashQ3
         });
 
-        newAccount.save((err, newAccount) => {
+        newAccount.save((err, newAccount) =>
+        {
             if (err) return console.error(err);
             console.log(req.body.username + 'added');
         });
@@ -91,7 +93,8 @@ exports.editPage = (req, res) =>
 
             res.render('edit', {
                 "title": "Edit User",
-                "config": account,
+                "config": req.session,
+                "lastVisited": req.cookies.lastVisited
             });
         }
         else res.send("There was an error accessing your account");
@@ -125,7 +128,9 @@ exports.edit = (req, res) =>
 exports.loginPage = (req, res) =>
 {
     res.render('login', {
-        "title": "Login"
+        "title": "Login",
+        "config": req.session,
+        "lastVisited": req.cookies.lastVisited
     });
 };
 
@@ -157,7 +162,7 @@ exports.login = (req, res) =>
                     res.redirect('/');
                 }
             });
-        }else
+        } else
         {
             res.redirect('/login');
         }
@@ -168,7 +173,7 @@ exports.index = (req, res) =>
 {
     let date = new Date().toLocaleString();
 
-    res.cookie('lastVisited', date, {maxAge: 9999999999999999});
+    res.cookie('lastVisited', date, { maxAge: 9999999999999999 });
 
     res.render('index', {
         "title": "Index",
