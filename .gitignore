@@ -1,3 +1,8 @@
+# Submission folder and files
+[Bb]inaries/
+[Bb]inaries/*.*
+[Bb]inaries/*
+
 # Logs
 logs
 *.log
