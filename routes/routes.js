@@ -54,18 +54,18 @@ exports.createUser = (req, res) =>
 
         let salt = bcrypt.genSaltSync(10);
         let hashPassword = bcrypt.hashSync(req.body.password, salt);
-        let hashQ1 = bcrypt.hashSync(req.body.favoriteColor, salt);
-        let hashQ2 = bcrypt.hashSync(req.body.betterVideogame, salt)
-        let hashQ3 = bcrypt.hashSync(req.body.preferredPhrase, salt)
+        //let hashQ1 = bcrypt.hashSync(req.body.favoriteColor, salt);
+        //let hashQ2 = bcrypt.hashSync(req.body.betterVideogame, salt);
+        //let hashQ3 = bcrypt.hashSync(req.body.preferredPhrase, salt);
 
         let newAccount = new Account({
             email: req.body.email,
             username: req.body.username,
             password: hashPassword,
             age: req.body.age,
-            securityQuestion1: hashQ1,
-            securityQuestion2: hashQ2,
-            securityQuestion3: hashQ3
+            securityQuestion1: req.body.favoriteColor,
+            securityQuestion2: req.body.betterVideogame,
+            securityQuestion3: req.body.preferredPhrase
         });
 
         newAccount.save((err, newAccount) =>
