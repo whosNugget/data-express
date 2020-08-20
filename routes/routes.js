@@ -22,6 +22,7 @@ let accountSchema = mongoose.Schema({
 });
 
 let Account = mongoose.model('Account_Collection', accountSchema);
+let salt = bcrypt.genSaltSync(10);
 
 //This is a get for site/create
 exports.createPage = (req, res) =>
@@ -52,7 +53,6 @@ exports.createUser = (req, res) =>
             return;
         }
 
-        let salt = bcrypt.genSaltSync(10);
         let hashPassword = bcrypt.hashSync(req.body.password, salt);
         //let hashQ1 = bcrypt.hashSync(req.body.favoriteColor, salt);
         //let hashQ2 = bcrypt.hashSync(req.body.betterVideogame, salt);
@@ -65,7 +65,7 @@ exports.createUser = (req, res) =>
             age: req.body.age,
             securityQuestion1: req.body.favoriteColor,
             securityQuestion2: req.body.betterVideogame,
-            securityQuestion3: req.body.preferredPhrase
+            securityQuestion3: req.body.preferredPhrase,
         });
 
         newAccount.save((err, newAccount) =>
@@ -88,7 +88,7 @@ exports.createUser = (req, res) =>
 //This is a get for site/edit
 exports.editPage = (req, res) =>
 {
-    console.log(req.session);
+    //console.log(req.session);
     Account.findOne({ username: req.session.user.username }, (err, account) =>
     {
         if (err) return console.error(err);
@@ -99,7 +99,7 @@ exports.editPage = (req, res) =>
 
             res.render('edit', {
                 "title": "Edit User",
-                "config": req.session,
+                "config": account,
                 "lastVisited": req.cookies.lastVisited
             });
         }
@@ -114,17 +114,46 @@ exports.edit = (req, res) =>
     {
         if (err) return console.error(err);
 
-        //going to have to do the unique username check still
+        //TODO going to have to do the unique username check still
         account.username = req.body.username;
+
         //Save the salted password if it exists, and if it matches the confirm
-        account.email = req.body.email;
-        account.age = req.body.age;
-        //Save the new options for each question if they are selected
+        if (req.body.password && req.body.confirmPassword && req.body.password === req.body.confirmPassword)
+        {
+            account.password = bcrypt.hashSync(req.body.password, salt);
+            console.log(account.username, "new pass:", account.password);
+        }
+        if (req.body.email && !(account.email === req.body.email))
+        {
+            account.email = req.body.email;
+            console.log(account.username, "new email:", account.email);
+        }
+        if (req.body.age && !(account.age === req.body.age))
+        {
+            account.age = req.body.age;
+            console.log(account.username, "new age:", account.age);
+        }
+        if (req.body.favoriteColor && !(account.securityQuestion1 === req.body.securityQuestion1))
+        {
+            account.securityQuestion1 = req.body.favoriteColor;
+            console.log(account.username, "new color:", account.securityQuestion1);
+        }
+        if (req.body.betterVideogame && !(account.securityQuestion2 === req.body.securityQuestion2))
+        {
+            account.securityQuestion2 = req.body.betterVideogame;
+            console.log(account.username, "new game:", account.securityQuestion2);
+        }
+        if (req.body.preferredPhrase && !(account.securityQuestion3 === req.body.securityQuestion3))
+        {
+            account.securityQuestion3 = req.body.preferredPhrase;
+            console.log(account.username, "new phrase:", account.securityQuestion3);
+        }
 
         account.save((err, account) =>
         {
             if (err) console.error(err);
             console.log(`${account.username} was updated`);
+            console.log(account);
         });
     });
     res.redirect('/');
