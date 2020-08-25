@@ -25,6 +25,21 @@ const initializeGraph = _ =>
     ctx.font = "3rem Roboto";
     ctx.fillText("Graph Goes Here", 15, 40);
 
+    //totalUserCount
+    //favoriteColor
+    //favoriteGame
+    //preferredPhrase
+    var yPos = 450;
+    var xPos = 15;
+    var xPosOffset = 30;
+    var width = 15;
+    var heightOffset = 100;
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(xPos,               yPos, width, -(main.apiResult.data.favoriteColor["Cyan"] / main.apiResult.data.totalUserCount) * heightOffset + 1);
+    ctx.fillRect(xPos += xPosOffset, yPos, width, -(main.apiResult.data.favoriteColor["Olive Drab"] / main.apiResult.data.totalUserCount) * heightOffset + 1);
+    ctx.fillRect(xPos += xPosOffset, yPos, width, -(main.apiResult.data.favoriteColor["Orange"] / main.apiResult.data.totalUserCount) * heightOffset + 1);
+    ctx.fillRect(xPos += xPosOffset, yPos, width, -(main.apiResult.data.favoriteColor["Purple"] / main.apiResult.data.totalUserCount) * heightOffset + 1);
     renderData(main.apiResult);
 };
 
