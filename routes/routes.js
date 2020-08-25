@@ -234,5 +234,45 @@ exports.logout = (req, res) =>
 
 exports.api = (req, res) =>
 {
-    res.json({});
+    Account.find((err, accounts) =>
+    {
+        if (err) return console.error(err);
+
+        console.log(accounts);
+
+        let answerFrequency = {
+            favoriteColor: {
+                "Orange": 0,
+                "Purple": 0,
+                "Cyan": 0,
+                "Olive Drab": 0,
+            },
+            favotiteGame: {
+                "Halo": 0,
+                "Call of Duty": 0,
+                "Battlefield": 0,
+                "Super Mario (Anything)": 0,
+            },
+            preferredPhrase: {
+                "Glass Half Empty": 0,
+                "Glass Half Full": 0,
+                "Tomorrow is a New Day": 0,
+                "I am Tired": 0,
+            }
+        };
+
+        if (accounts.length > 0)
+            accounts.forEach(accnt =>
+            {
+                console.log(accnt);
+                console.log(answerFrequency);
+
+                answerFrequency.favoriteColor[accnt.securityQuestion1]++;
+                answerFrequency.favotiteGame[accnt.securityQuestion2]++;
+                answerFrequency.preferredPhrase[accnt.securityQuestion3]++;
+            });
+        else answerFrequency = { "no data": true };
+
+        res.json(answerFrequency);
+    });
 }
