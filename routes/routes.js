@@ -231,3 +231,8 @@ exports.logout = (req, res) =>
         }
     });
 };
+
+exports.api = (req, res) =>
+{
+    res.json({});
+}

@@ -52,6 +52,7 @@ app.post('/create', urlencodedParser, routes.createUser);
 app.get('/login', routes.loginPage);
 app.post('/login', urlencodedParser, routes.login);
 app.get('/index', routes.index);
+app.get('/api', routes.api);
 app.get('/', routes.index);
 app.get('*', routes.index);
 
