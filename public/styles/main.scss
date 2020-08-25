@@ -81,6 +81,10 @@ header
 
 #main
 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     background: white;
     box-shadow: 0 2px 4px 2px #0000002d;
     border-radius: 8px;
@@ -91,6 +95,7 @@ header
         font-family: 'Russo One', sans-serif;
         font-size: 2rem;
         text-align: center;
+        margin-bottom: 1vh;
     }
 
     h3
@@ -98,6 +103,14 @@ header
         font-family: 'Baloo Tamma 2', cursive;
         font-size: 1.8rem;
         text-align: center;
+        margin-top: 1vh;
+    }
+
+    #graphs
+    {
+        width: 45vw;
+        height: 36vh;
+        margin-bottom: 1.4vh;
     }
 }
 
