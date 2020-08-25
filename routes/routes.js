@@ -241,6 +241,7 @@ exports.api = (req, res) =>
         console.log(accounts);
 
         let answerFrequency = {
+            totalUserCount: accounts.length,
             favoriteColor: {
                 "Orange": 0,
                 "Purple": 0,
