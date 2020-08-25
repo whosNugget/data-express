@@ -257,7 +257,7 @@ exports.api = (req, res) =>
                 "Glass Half Empty": 0,
                 "Glass Half Full": 0,
                 "Tomorrow is a New Day": 0,
-                "I am Tired": 0,
+                "I am tired": 0,
             }
         };
 

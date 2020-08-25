@@ -24,6 +24,13 @@ const initializeGraph = _ =>
     ctx.clearRect(0, 0, main.graphsCanvas.width, main.graphsCanvas.height);
     ctx.font = "3rem Roboto";
     ctx.fillText("Graph Goes Here", 15, 40);
+
+    renderData(main.apiResult);
+};
+
+const renderData = data =>
+{
+
 };
 
 main.graphsCanvas.setAttribute("width", `${main.graphsCanvas.clientWidth}`);
