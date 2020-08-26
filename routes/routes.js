@@ -18,7 +18,11 @@ let accountSchema = mongoose.Schema({
     age: Number,
     securityQuestion1: String,
     securityQuestion2: String,
-    securityQuestion3: String
+    securityQuestion3: String,
+    avatarEyes: String,
+    avatarNose: String,
+    avatarMouth: String,
+    avatarColor: String
 });
 
 let Account = mongoose.model('Account_Collection', accountSchema);
@@ -66,6 +70,10 @@ exports.createUser = (req, res) =>
             securityQuestion1: req.body.favoriteColor,
             securityQuestion2: req.body.betterVideogame,
             securityQuestion3: req.body.preferredPhrase,
+            avatarEyes: "eyes1",
+            avatarNose: "nose2",
+            avatarMouth: "mouth1",
+            avatarColor: "8e8895"
         });
 
         newAccount.save((err, newAccount) =>
@@ -148,6 +156,11 @@ exports.edit = (req, res) =>
             account.securityQuestion3 = req.body.preferredPhrase;
             console.log(account.username, "new phrase:", account.securityQuestion3);
         }
+
+        account.avatarEyes = req.body.EyeDropdown;
+        account.avatarNose = req.body.NoseDropdown;
+        account.avatarMouth = req.body.MouthDropdown;
+        account.avatarColor = req.body.AvatarColor.substring(1);
 
         account.save((err, account) =>
         {
