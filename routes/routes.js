@@ -248,7 +248,7 @@ exports.api = (req, res) =>
                 "Cyan": 0,
                 "Olive Drab": 0,
             },
-            favotiteGame: {
+            favoriteGame: {
                 "Halo": 0,
                 "Call of Duty": 0,
                 "Battlefield": 0,
@@ -269,7 +269,7 @@ exports.api = (req, res) =>
                 console.log(answerFrequency);
 
                 answerFrequency.favoriteColor[accnt.securityQuestion1]++;
-                answerFrequency.favotiteGame[accnt.securityQuestion2]++;
+                answerFrequency.favoriteGame[accnt.securityQuestion2]++;
                 answerFrequency.preferredPhrase[accnt.securityQuestion3]++;
             });
         else answerFrequency = { "no data": true };

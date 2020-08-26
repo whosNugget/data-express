@@ -72,8 +72,10 @@ header ul {
 }
 
 header ul li {
-  -webkit-transition: background 0.2s ease-in-out,  border-radius 0.2s ease-in-out;
-  transition: background 0.2s ease-in-out,  border-radius 0.2s ease-in-out;
+  -webkit-transition: background 0.2s ease-in-out, 
+ border-radius 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out, 
+ border-radius 0.2s ease-in-out;
   padding: 1vh 1vw;
   margin: .4vh 1vw;
   cursor: pointer;
@@ -132,7 +134,7 @@ header ul li a {
 
 #main #graphs {
   width: 45vw;
-  height: 36vh;
+  height: 64vh;
   margin-bottom: 1.4vh;
 }
 
