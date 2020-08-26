@@ -65,8 +65,8 @@ const initializeGraph = _ =>
     ctx.fillText("Call of Duty " + main.apiResult.data.favoriteGame["Call of Duty"], xPos + (width / 2), yPos + 30)
     ctx.fillRect(xPos += xPosOffset, yPos, width, -(main.apiResult.data.favoriteGame["Battlefield"] / main.apiResult.data.totalUserCount) * heightOffset + 1);
     ctx.fillText("Battlefield " + main.apiResult.data.favoriteGame["Battlefield"], xPos + (width / 2), yPos + 30)
-    ctx.fillRect(xPos += xPosOffset, yPos, width, -(main.apiResult.data.favoriteGame["Super Mario (Anything)"] / main.apiResult.data.totalUserCount) * heightOffset + 1);
-    ctx.fillText("Super Mario (Anything) " + main.apiResult.data.favoriteGame["Super Mario (Anything)"], xPos + (width / 2), yPos + 30)
+    ctx.fillRect(xPos += xPosOffset, yPos, width, -(main.apiResult.data.favoriteGame["Super Mario"] / main.apiResult.data.totalUserCount) * heightOffset + 1);
+    ctx.fillText("Super Mario " + main.apiResult.data.favoriteGame["Super Mario"], xPos + (width / 2), yPos + 30)
 
     //Preferred Phrase
     xPos = main.graphsCanvas.width / 4;

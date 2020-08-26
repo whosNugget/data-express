@@ -265,7 +265,7 @@ exports.api = (req, res) =>
                 "Halo": 0,
                 "Call of Duty": 0,
                 "Battlefield": 0,
-                "Super Mario (Anything)": 0,
+                "Super Mario": 0,
             },
             preferredPhrase: {
                 "Glass Half Empty": 0,
