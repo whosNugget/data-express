@@ -211,6 +211,7 @@ exports.login = (req, res) =>
                     }
                     res.redirect('/');
                 }
+                else res.redirect('/login');
             });
         }
         else
