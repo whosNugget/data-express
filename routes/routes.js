@@ -167,10 +167,9 @@ exports.edit = (req, res) =>
             if (err) console.error(err);
             console.log(`${account.username} was updated`);
             console.log(account);
-            req.session.user.data = account;
         });
     });
-    res.redirect('/');
+    res.redirect('/logout');
 };
 
 //This is a get for site/login
@@ -255,8 +254,6 @@ exports.api = (req, res) =>
     {
         if (err) return console.error(err);
 
-        console.log(accounts);
-
         let answerFrequency = {
             totalUserCount: accounts.length,
             favoriteColor: {
@@ -282,9 +279,6 @@ exports.api = (req, res) =>
         if (accounts.length > 0)
             accounts.forEach(accnt =>
             {
-                console.log(accnt);
-                console.log(answerFrequency);
-
                 answerFrequency.favoriteColor[accnt.securityQuestion1]++;
                 answerFrequency.favoriteGame[accnt.securityQuestion2]++;
                 answerFrequency.preferredPhrase[accnt.securityQuestion3]++;
