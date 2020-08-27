@@ -22,15 +22,16 @@ body
             if config  && config.user && config.user.isAuthenticated
                 //-User is logged in
                 li
-                    a(href="/logout") Log Out
-                li
                     a(href="/edit") Edit Account
+                li
+                    a(href="/logout") Log Out
+                    img(src=`https://api.adorable.io/avatars/face/${config.user.data.avatarEyes}/${config.user.data.avatarNose}/${config.user.data.avatarMouth}/${config.user.data.avatarColor}`)
             else
                 //- User is not logged in
                 li
-                    a(href="/login") Log In
-                li
                     a(href="/create") Create Account
+                li
+                    a(href="/login") Log In
 
     //- if config
     //-     span=JSON.stringify(config)

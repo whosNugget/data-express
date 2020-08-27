@@ -2,6 +2,7 @@ extends layout
 
 block content
     image(name='userPic' id='userPic' src=`https://api.adorable.io/avatars/face/${config.avatarEyes}/${config.avatarNose}/${config.avatarMouth}/${config.avatarColor}`)
+    
     form(method="post" action="/edit")
         div
             label(for="email") Email: 
@@ -55,46 +56,47 @@ block content
                     input(type="radio" id="NewDay" name="preferredPhrase" value="Tomorrow is a new day" checked=config.securityQuestion3==="Tomorrow is a new day")
                 label(for="Tired") I am tired
                     input(type="radio" id="Tired" name="preferredPhrase" value="I am tired" checked=config.securityQuestion3==="I am tired")
+
         div
             label Edit Profile Avatar
-            Label(for="EyeDropdown") Eyes:&nbsp;
-                select(name='EyeDropdown' id='EyeDropdown')
-                    option(selected=config.avatarEyes value=config.avatarEyes)
-                    option(value='eyes1') Oval
-                    option(value='eyes2') Saggy
-                    option(value='eyes3') Close Hole
-                    option(value='eyes4') Far Hole
-                    option(value='eyes5') Happy Arcs
-                    option(value='eyes6') Large Saggy
-                    option(value='eyes7') Big Sad
-                    option(value='eyes9') Angled Oval
+                label(for="EyeDropdown") Eyes:&nbsp;
+                    select(name='EyeDropdown' id='EyeDropdown')
+                        option(selected=config.avatarEyes value=config.avatarEyes)
+                        option(value='eyes1') Oval
+                        option(value='eyes2') Saggy
+                        option(value='eyes3') Close Hole
+                        option(value='eyes4') Far Hole
+                        option(value='eyes5') Happy Arcs
+                        option(value='eyes6') Large Saggy
+                        option(value='eyes7') Big Sad
+                        option(value='eyes9') Angled Oval
 
-            Label(for="NoseDropdown") Nose:&nbsp;
-                select(name='NoseDropdown' id='NoseDropdown')
-                    option(selected=config.avatarNose value=config.avatarNose)
-                    option(value='nose2') Slanted
-                    option(value='nose3') Stout
-                    option(value='nose4') High
-                    option(value='nose5') Fat
-                    option(value='nose6') Tall
-                    option(value='nose7') Short
-                    option(value='nose8') Lengthy
-                    option(value='nose9') Large
+                label(for="NoseDropdown") Nose:&nbsp;
+                    select(name='NoseDropdown' id='NoseDropdown')
+                        option(selected=config.avatarNose value=config.avatarNose)
+                        option(value='nose2') Slanted
+                        option(value='nose3') Stout
+                        option(value='nose4') High
+                        option(value='nose5') Fat
+                        option(value='nose6') Tall
+                        option(value='nose7') Short
+                        option(value='nose8') Lengthy
+                        option(value='nose9') Large
 
-            Label(for="MouthDropdown") Mouth:&nbsp;
-                select(name='MouthDropdown' id='MouthDropdown')
-                    option(selected=config.avatarMouth value=config.avatarMouth)
-                    option(value='mouth1') Straight Line
-                    option(value='mouth3') Puckered Lips
-                    option(value='mouth5') Open
-                    option(value='mouth6') Rectangle
-                    option(value='mouth7') Large Saggy Oval
-                    option(value='mouth9') Medium Happy
-                    option(value='mouth10') Sideways Mouth
-                    option(value='mouth11') Large Happy
+                label(for="MouthDropdown") Mouth:&nbsp;
+                    select(name='MouthDropdown' id='MouthDropdown')
+                        option(selected=config.avatarMouth value=config.avatarMouth)
+                        option(value='mouth1') Straight Line
+                        option(value='mouth3') Puckered Lips
+                        option(value='mouth5') Open
+                        option(value='mouth6') Rectangle
+                        option(value='mouth7') Large Saggy Oval
+                        option(value='mouth9') Medium Happy
+                        option(value='mouth10') Sideways Mouth
+                        option(value='mouth11') Large Happy
 
-            Label(for="AvatarColor") Color:&nbsp;
-                input(type="color" id="AvatarColor" name="AvatarColor" value=`#${config.avatarColor}`)
-
+                label(for="AvatarColor") Color:&nbsp;
+                    input(type="color" id="AvatarColor" name="AvatarColor" value=`#${config.avatarColor}`)
         input(type="submit" value="Update Account")
+
     script(src='scripts/avatarUpdater.js')

@@ -70,10 +70,10 @@ exports.createUser = (req, res) =>
             securityQuestion1: req.body.favoriteColor,
             securityQuestion2: req.body.betterVideogame,
             securityQuestion3: req.body.preferredPhrase,
-            avatarEyes: "eyes1",
-            avatarNose: "nose2",
-            avatarMouth: "mouth1",
-            avatarColor: "8e8895"
+            avatarEyes: req.body.EyeDropdown,
+            avatarNose: req.body.NoseDropdown,
+            avatarMouth: req.body.MouthDropdown,
+            avatarColor: req.body.AvatarColor.substring(1),
         });
 
         newAccount.save((err, newAccount) =>
@@ -167,6 +167,7 @@ exports.edit = (req, res) =>
             if (err) console.error(err);
             console.log(`${account.username} was updated`);
             console.log(account);
+            req.session.user.data = account;
         });
     });
     res.redirect('/');
@@ -205,12 +206,14 @@ exports.login = (req, res) =>
                     req.session.user =
                     {
                         isAuthenticated: true,
-                        username: req.body.username
+                        username: req.body.username,
+                        data: data,
                     }
                     res.redirect('/');
                 }
             });
-        } else
+        }
+        else
         {
             res.redirect('/login');
         }

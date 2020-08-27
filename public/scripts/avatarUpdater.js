@@ -2,10 +2,14 @@ let eyes = document.getElementById('EyeDropdown');
 let nose = document.getElementById('NoseDropdown');
 let mouth = document.getElementById('MouthDropdown');
 let color = document.getElementById('AvatarColor');
-let url = `https://api.adorable.io/avatars/face/${eyes.options[eyes.selectedIndex].value}/${nose.options[nose.selectedIndex].value}/${mouth.options[mouth.selectedIndex].value}/${color.value.substring(1)}`;
 let picture = document.getElementById('userPic');
+let url;
+if (eyes.options[eyes.selectedIndex].value && nose.options[nose.selectedIndex].value && mouth.options[mouth.selectedIndex].value && color.value && color.value.substring(1))
+    url = `https://api.adorable.io/avatars/face/${eyes.options[eyes.selectedIndex].value}/${nose.options[nose.selectedIndex].value}/${mouth.options[mouth.selectedIndex].value}/${color.value.substring(1)}`;
+else
+    url = "https://api.adorable.io/avatars/face/eyes1/nose2/mouth1/ffffff";
 
-switch(eyes.options[eyes.selectedIndex].value)
+switch (eyes.options[eyes.selectedIndex].value)
 {
     case 'eyes1':
         eyes.options[eyes.selectedIndex].innerHTML = "Oval";
@@ -33,7 +37,7 @@ switch(eyes.options[eyes.selectedIndex].value)
         break;
 }
 
-switch(nose.options[nose.selectedIndex].value)
+switch (nose.options[nose.selectedIndex].value)
 {
     case 'nose2':
         nose.options[nose.selectedIndex].innerHTML = "Slanted";
@@ -61,7 +65,7 @@ switch(nose.options[nose.selectedIndex].value)
         break;
 }
 
-switch(mouth.options[mouth.selectedIndex].value)
+switch (mouth.options[mouth.selectedIndex].value)
 {
     case 'mouth1':
         mouth.options[mouth.selectedIndex].innerHTML = "Straight Line";
@@ -89,10 +93,12 @@ switch(mouth.options[mouth.selectedIndex].value)
         break;
 }
 
-const handleChange = evt => {
+const handleChange = evt =>
+{
     url = `https://api.adorable.io/avatars/face/${eyes.options[eyes.selectedIndex].value}/${nose.options[nose.selectedIndex].value}/${mouth.options[mouth.selectedIndex].value}/${color.value.substring(1)}`;
     picture.src = url;
 }
+handleChange();
 
 eyes.addEventListener('change', handleChange);
 nose.addEventListener('change', handleChange);

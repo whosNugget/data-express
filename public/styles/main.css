@@ -6,7 +6,7 @@
 body, html {
   width: 100vw;
   height: 100vh;
-  padding: 0;
+  padding: 2vh 0;
   margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -19,6 +19,7 @@ body, html {
           align-items: center;
   background: #cd7b00;
   font-size: 1em;
+  overflow-x: hidden;
 }
 
 header {
@@ -72,13 +73,26 @@ header ul {
 }
 
 header ul li {
-  -webkit-transition: background 0.2s ease-in-out, 
- border-radius 0.2s ease-in-out;
-  transition: background 0.2s ease-in-out, 
- border-radius 0.2s ease-in-out;
+  -webkit-transition: background 0.2s ease-in-out,  border-radius 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out,  border-radius 0.2s ease-in-out;
   padding: 1vh 1vw;
   margin: .4vh 1vw;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header ul li img {
+  max-height: 6vh;
+  margin-left: .8vw;
+  border-radius: 8%;
 }
 
 header ul li:hover {
@@ -133,8 +147,8 @@ header ul li a {
 }
 
 #main #graphs {
-  width: 45vw;
-  height: 64vh;
+  width: 98%;
+  height: 36vh;
   margin-bottom: 1.4vh;
 }
 
@@ -263,5 +277,12 @@ form input[type="submit"]:focus {
 
 form input[type="submit"]:hover {
   outline: none;
+}
+
+#userPic {
+  border-radius: 15px;
+  margin-right: 15px;
+  margin-top: -1vh;
+  border: 1px solid black;
 }
 /*# sourceMappingURL=main.css.map */

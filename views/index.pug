@@ -15,6 +15,7 @@ block content
                 a(href="/create") creating an account?
         br
 
-        canvas(id="graphs")
+        if config && config.user
+            canvas(id="graphs")
 
     script(src="scripts/main.js")
