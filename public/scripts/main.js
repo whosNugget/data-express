@@ -25,7 +25,7 @@ const initializeGraph = _ =>
 {
     // Create and populate the graph with stuff
     let ctx = main.graphsCanvas.getContext('2d');
-    xPos = main.graphsCanvas.width / 4;
+    xPos = (main.graphsCanvas.width / 4) - width / 2;
 
     ctx.clearRect(0, 0, main.graphsCanvas.width, main.graphsCanvas.height);
     ctx.font = "3rem Roboto";
@@ -52,7 +52,7 @@ const initializeGraph = _ =>
     ctx.fillText("Purple " + main.apiResult.data.favoriteColor["Purple"], xPos + (width / 2), yPos + 30)
 
     //Favorite Game
-    xPos = main.graphsCanvas.width / 4;
+    xPos = (main.graphsCanvas.width / 4) - width / 2;
     yPos += 250;
 
     ctx.font = "3rem Roboto";
@@ -70,7 +70,7 @@ const initializeGraph = _ =>
     ctx.fillText("Super Mario " + main.apiResult.data.favoriteGame["Super Mario"], xPos + (width / 2), yPos + 30)
 
     //Preferred Phrase
-    xPos = main.graphsCanvas.width / 4;
+    xPos = (main.graphsCanvas.width / 4) - width / 2;
     yPos += 250;
 
     ctx.font = "3rem Roboto";
